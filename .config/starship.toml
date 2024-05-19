@@ -1,0 +1,26 @@
+# Move the directory to the second line
+format ='''
+$directory$fill$git_branch $git_status
+[➤](bold green) '''
+palette='funky'
+
+[directory]
+read_only=''
+truncate_to_repo=false
+style='bold cyan'
+
+[git_branch]
+format='[ $symbol$branch(:$remote_branch)]($style)'
+
+[git_status]
+untracked='[?$count](red)'
+modified='[!$count](yellow)'
+staged='[+$count](green)'
+style=''
+format='([$staged $modified $untracked]($style) )'
+
+[fill]
+symbol=' '
+
+[palettes.funky]
+darker_cyan='32'
