@@ -1,15 +1,16 @@
 ANTIDOTE_HOME="${HOME}/.antidote"
 
-if [ ! -d "$ANTIDOTE_HOME" ]; then
-	mkdir -p "$ANTIDOTE_HOME"
-	git clone --depth=1 https://github.com/mattmc3/antidote.git "$ANTIDOTE_HOME" 
-fi
-
 source "${ANTIDOTE_HOME}/antidote.zsh"
 
 antidote load
 #autoload -Uz promptinit && promptinit && prompt starship
-autoload -U compinit && compinit
+# call compinit onlz once per day for better performance
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -c '%z'  ~/.zcompdump | date +'%j') ]; then
+  compinit
+else
+  compinit -C
+fi
 
 eval "$(starship init zsh)"
 
@@ -46,12 +47,20 @@ zstyle ':completion:*' menu no
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
+# check if fzf version is equal or higher then 0.48.0
+fzf_version=$(fzf --version | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
+IFS='.' read -r major minor patch <<< "$fzf_version"
+if [[ $major -ge 0 && $minor -ge 48 && $patch -ge 0 ]]; then
+  eval "$(fzf --zsh)"
+else
+  source "/usr/share/doc/fzf/examples/completion.zsh"
+  source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+  zstyle ':fzf-tab:*' fzf-bindings-default 'tab:down,btab:up,change:top,ctrl-space:toggle,bspace:backward-delete-char,ctrl-h:backward-delete-char'
+fi
+
+
 alias ls='ls --color'
 alias la='ls --color -la'
 alias c='clear'
 
 unalias z
-
-eval "$(fzf --zsh)"
-
-
