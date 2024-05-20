@@ -19,7 +19,9 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 bindkey '^[[A' history-substring-search-up
+bindkey '^[OA' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey '^[OB' history-substring-search-down
 
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
