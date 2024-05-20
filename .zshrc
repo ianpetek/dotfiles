@@ -90,3 +90,5 @@ ZSH_HIGHLIGHT_STYLES[precommand]=fg=29,bold
 #ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 #ZSH_HIGHLIGHT_STYLES[assign]=none
 
+
+export PATH="$PATH:/opt/nvim-linux64/bin"
