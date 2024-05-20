@@ -1,13 +1,15 @@
 # Move the directory to the second line
 format ='''
 $directory$fill$git_branch $git_status
-[➤](bold green) '''
+[➤](bold blue) '''
 palette='funky'
 
 [directory]
 read_only=''
 truncate_to_repo=false
 style='bold cyan'
+truncation_length=5
+truncation_symbol="…/"
 
 [git_branch]
 format='[ $symbol$branch(:$remote_branch)]($style)'
