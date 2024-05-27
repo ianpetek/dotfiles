@@ -17,6 +17,8 @@ else
   compinit -C
 fi
 
+_comp_options+=(globdots)
+
 eval "$(starship init zsh)"
 
 
@@ -42,6 +44,7 @@ setopt hist_find_no_dups
 
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list  'r:|=*' 'l:|=* r:|=*'
 # Autocomplete colors
 #if [[ -z "$LS_COLORS" ]]; then 
 #	(( $+commands[dircolors] )) && eval "$(dircolors -b)" 
@@ -97,3 +100,5 @@ ZSH_HIGHLIGHT_STYLES[precommand]=fg=29,bold
 
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
+
