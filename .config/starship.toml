@@ -1,6 +1,6 @@
 # Move the directory to the second line
 format ='''
-$directory$fill$git_branch $git_status
+$username$hostname$directory$fill$git_branch $git_status
 [➤](bold blue) '''
 palette='funky'
 
@@ -26,3 +26,14 @@ symbol=' '
 
 [palettes.funky]
 darker_cyan='32'
+
+[hostname]
+ssh_only = true 
+format = '[@](blue bold)[$hostname](blue bold) '
+disabled = false
+
+[username]
+detect_env_vars = ['SSH_CONNECTION']
+style_user = 'blue bold'
+style_root = 'blue bold'
+format = '[$user]($style)'
