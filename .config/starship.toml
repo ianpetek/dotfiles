@@ -8,7 +8,7 @@ palette='funky'
 read_only=''
 truncate_to_repo=false
 style='bold cyan'
-truncation_length=5
+truncation_length=8
 truncation_symbol="…/"
 
 [git_branch]

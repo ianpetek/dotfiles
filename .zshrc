@@ -21,7 +21,7 @@ _comp_options+=(globdots)
 
 eval "$(starship init zsh)"
 
-
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>|'
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
@@ -101,5 +101,12 @@ ZSH_HIGHLIGHT_STYLES[precommand]=fg=29,bold
 
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
+# italija alias
+alias connect_fork='sshpass -pS1stemlgv ssh forklift-load-scanner'
+
+ls_trace() { 
+  fp=${1};
+  /home/romb/dev/romb/system/xagv-load-scanning/cmake-build-relwithdebinfo/xagv_load_scanner/load_scanner_trace_player $fp -l ;}
 
 
